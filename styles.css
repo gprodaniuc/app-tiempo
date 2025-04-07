@@ -1,0 +1,18 @@
+html, body{
+    height: 100%;
+    background: linear-gradient(0deg, #9df0f4, #ffffff);
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}
+
+.Contenedor{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#img {
+    
+}
