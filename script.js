@@ -25,7 +25,7 @@ function apiWeather(){
                 return response.json()})
             .then (data => {
                 if(data.length == 0) {
-                    throw new Error ('No se encontró la ciudad');
+                    document.getElementById('error').textContent ='No se encontró la ciudad';
                 }
                 const lat = data[0].lat;
                 const lon = data[0].lon;
@@ -48,6 +48,7 @@ function apiWeather(){
                             } else {
                                 document.getElementById('rain').textContent = 'Las precipitaciones están: ' + data.rain['1h'] + ' mm/h';
                             }
+                            backgroundImg();
                 }) .catch(error => console.log(error));
             })
         }
@@ -56,30 +57,34 @@ function backgroundColor(){
     let today = new Date();
 
     if(today.getHours() < 8 || today.getHours() >= 21){
-        document.body.style.background = 'linear-gradient(0deg,rgb(64, 76, 241),rgb(0, 0, 0))';
+        document.body.style.background = 'linear-gradient(0deg,rgb(52, 65, 248),rgb(0, 0, 0))';
+        document.body.style.color = 'white';
     } else if (today.getHours() >= 18 && today.getHours() < 21){
         document.body.style.background = 'linear-gradient(0deg,rgb(160, 234, 247),rgb(255, 146, 57))';
+        document.body.style.color = 'black';
     }
 }
 
 function backgroundImg(){
     let img = document.getElementById('imgTiempo');
-    let tiempo = document.getElementById('main').value;
+    let tiempo = document.getElementById('main').innerHTML;
     let hora = new Date();
 
-    img.setAttribute('src', 'img/arcoiris.png');
-
-    if(today.getHours() < 8 || today.getHours() >= 21){
     switch(tiempo){
-        case 'Nublado': img.setAttribute('src', 'img/nublado.png');
+        case 'Tiempo: Despejado': img.setAttribute('src', 'img/sol.png');
         break;
-        case '':
-    }
-} else if (today.getHours() >= 18 && today.getHours() < 21){
-    switch(tiempo){
-        case 'Nublado': img.setAttribute('src', 'img/nublado.png');
+        case 'Tiempo: Nublado': img.setAttribute('src', 'img/nublado.png');
         break;
-        case '':
+        case 'Tiempo: Lluvioso': img.setAttribute('src', 'img/lluvia.png');
+        break;
+        case 'Tiempo: Llovizna': img.setAttribute('src', 'img/lluvia.png');
+        break;
+        case 'Tiempo: Tormenta': img.setAttribute('src', 'img/tormenta.png');
+        break;
+        case 'Tiempo: Nieve': img.setAttribute('src', 'img/nieve.png');
+        break;
+        case 'Tiempo: Neblina': img.setAttribute('src', 'img/niebla.png');
+        break;
+        default: img.setAttribute('src', 'img/arcoiris.png')
     }
-}
 }
