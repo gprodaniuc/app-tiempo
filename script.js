@@ -15,7 +15,7 @@ function apiWeather(){
         };
 
 
-    const urlLocation = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=80e4e613161854fade9dde28ce72f768`;
+    const urlLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=80e4e613161854fade9dde28ce72f768`;
 
     fetch(urlLocation)
             .then (response => {
